@@ -13,35 +13,41 @@ public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
     private String title;
+    private Double score;
     @Column(name = "game_year")
     private Integer year;
-    private String platform;
+    private String platforms;
     private String imgUrl;
-    private String shorDescription;
+    private String genre;
+    @Column(columnDefinition = "TEXT")
+    private String shortDescription;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game() {
     }
 
-    public Game(Long id, String title, Integer year, String platform, String imgUrl, String shorDescription,
-            String longDescription) {
-        this.id = id;
+    public Game(Long Id, String title, Integer year, String platforms, String imgUrl, String shortDescription,
+            String longDescription, Double score, String genre) {
+        this.Id = Id;
         this.title = title;
         this.year = year;
-        this.platform = platform;
+        this.platforms = platforms;
         this.imgUrl = imgUrl;
-        this.shorDescription = shorDescription;
+        this.shortDescription = shortDescription;
         this.longDescription = longDescription;
+        this.score = score;
+        this.genre = genre;
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getTitle() {
@@ -60,12 +66,12 @@ public class Game {
         this.year = year;
     }
 
-    public String getPlatform() {
-        return platform;
+    public String getPlatforms() {
+        return platforms;
     }
 
-    public void setPlatform(String platform) {
-        this.platform = platform;
+    public void setPlatforms(String platforms) {
+        this.platforms = platforms;
     }
 
     public String getImgUrl() {
@@ -76,12 +82,12 @@ public class Game {
         this.imgUrl = imgUrl;
     }
 
-    public String getShorDescription() {
-        return shorDescription;
+    public String getShortDescription() {
+        return shortDescription;
     }
 
-    public void setShorDescription(String shorDescription) {
-        this.shorDescription = shorDescription;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public String getLongDescription() {
@@ -92,11 +98,27 @@ public class Game {
         this.longDescription = longDescription;
     }
 
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((Id == null) ? 0 : Id.hashCode());
         return result;
     }
 
@@ -109,10 +131,10 @@ public class Game {
         if (getClass() != obj.getClass())
             return false;
         Game other = (Game) obj;
-        if (id == null) {
-            if (other.id != null)
+        if (Id == null) {
+            if (other.Id != null)
                 return false;
-        } else if (!id.equals(other.id))
+        } else if (!Id.equals(other.Id))
             return false;
         return true;
     }
